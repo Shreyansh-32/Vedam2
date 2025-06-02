@@ -1,0 +1,79 @@
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User{
+  id      Int     @id     @default(autoincrement())
+  email   String  @unique
+  password  String
+  firstname String
+  lastname  String
+  phone     Int
+  addresses   Address[]
+  carts      Cart[]
+  orders      Order[]
+}
+
+model Product{
+  id    Int     @id   @default(autoincrement())
+  title   String
+  description   String
+  author    String
+  page    Int
+  price   Int
+  category    String
+  sellerId   Int
+  quantity    Int
+  imageUrl    String
+  seller    Seller    @relation(fields: [sellerId] , references: [id])
+  carts     Cart[]
+  orders    Order[]
+}
+
+model Seller{
+  id    Int   @id   @default(autoincrement())
+  email   String  @unique
+  password    String
+  firstname   String
+  lastname    String
+  phone     Int
+  products    Product[] 
+}
+
+model Cart{
+  id    Int   @id   @default(autoincrement())
+  productId   Int
+  userId    Int
+  quantity  Int
+  user    User  @relation(fields: [userId] , references: [id])
+  product   Product   @relation(fields: [productId] , references: [id])
+}
+
+model Order{
+  id    Int   @id   @default(autoincrement())
+  productId   Int
+  userId    Int
+  quantity  Int
+  time  DateTime  @default(now())
+  product   Product   @relation(fields: [productId] , references: [id])
+  user    User      @relation(fields: [userId] , references: [id])
+}
+
+model Address{
+  id  Int   @id   @default(autoincrement())
+  houseNo   String
+  street    String
+  area    String
+  city    String
+  state   String
+  pincode   Int
+  userId    Int
+  user    User  @relation(fields: [userId] , references: [id])
+}
