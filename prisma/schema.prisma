@@ -19,6 +19,7 @@ model User{
   addresses   Address[]
   carts      Cart[]
   orders      Order[]
+  feedbacks   Feedback[]
 }
 
 model Product{
@@ -35,6 +36,7 @@ model Product{
   seller    Seller    @relation(fields: [sellerId] , references: [id])
   carts     Cart[]
   orders    Order[]
+  feedbacks   Feedback[]
 }
 
 model Seller{
@@ -62,8 +64,11 @@ model Order{
   userId    Int
   quantity  Int
   time  DateTime  @default(now())
+  price   Int
+  addressId   Int
   product   Product   @relation(fields: [productId] , references: [id])
   user    User      @relation(fields: [userId] , references: [id])
+  address Address   @relation(fields: [addressId] , references: [id])
 }
 
 model Address{
@@ -76,4 +81,14 @@ model Address{
   pincode   Int
   userId    Int
   user    User  @relation(fields: [userId] , references: [id])
+  orders    Order[]
+}
+
+model Feedback{
+  id    Int   @id   @default(autoincrement())
+  feedback    String
+  productId   Int
+  userId      Int
+  product   Product   @relation(fields: [productId] , references: [id])
+  user      User      @relation(fields: [userId] , references: [id])
 }
