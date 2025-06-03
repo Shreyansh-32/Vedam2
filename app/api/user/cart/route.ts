@@ -59,3 +59,23 @@ export async function POST(req : NextRequest){
    }
    return;
 };
+
+export async function GET(req : NextRequest){
+
+    const data = await req.json();
+
+    const userId : number = data.userId;
+
+    try{
+        const cart = await prisma.cart.findMany({
+            where:{
+                userId
+            }
+        });
+
+        return NextResponse.json({cart} , {status:200});
+    }
+    catch(err){
+        return NextResponse.json({"message" : "Internal server error" , error : err} , {status : 500});
+    }
+}

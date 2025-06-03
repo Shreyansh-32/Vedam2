@@ -91,3 +91,22 @@ export async function DELETE(req : NextRequest){
         return NextResponse.json({"message" : "Internal server error" , error : err} , {status : 500});
     }
 }
+
+export async function GET(req : NextRequest){
+    const data = await req.json();
+
+    const userId : number = data.userId;
+
+    try{
+        const orders = await prisma.order.findMany({
+            where:{
+                userId
+            }
+        });
+
+        return NextResponse.json({orders} , {status:200});
+    }
+    catch(err){
+        return NextResponse.json({"message" : "Internal server error" , error : err} , {status : 500});
+    }
+}

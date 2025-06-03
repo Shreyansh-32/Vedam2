@@ -89,3 +89,13 @@ export async function DELETE(req : NextRequest){
         return NextResponse.json({"message" : "Internal server error" , error : err} , {status : 500});
     }
 }
+
+export async function GET(){
+    try{
+        const products = await prisma.product.findMany();
+        return NextResponse.json({products} , {status:200});
+    }
+    catch(err){
+        return NextResponse.json({"message" : "Internal server error" , error : err} , {status : 500});
+    }
+}
