@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@/app/generated/prisma";
-import { userSchema } from "@/app/lib/zodSchema";
+import { userSchema } from "@/lib/zodSchema";
 import bcrypt from "bcrypt";
 
 const prisma = new PrismaClient();
