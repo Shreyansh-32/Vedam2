@@ -56,7 +56,7 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
         toast.dismiss(loadingToast);
         if (res?.ok) {
           toast.success("Sign in successfull");
-          router.push("/");
+          router.push(role === "seller" ? "/seller" : "/");
           return;
         } else {
           toast.error(res?.error || "Invalid username or password");
@@ -83,7 +83,7 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
         toast.dismiss(loadingToast);
         if (res.status === 200) {
           toast.success("Sign up successfull");
-          router.push("/signin");
+          router.push(role === "seller" ? "/seller/signin" : "/signin");
         }
       } catch (error) {
         toast.dismiss(loadingToast);
@@ -170,17 +170,31 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
                 : " hover:bg-amber-100 duration-200 cursor-pointer"
             } mt-3 px-2 py-3 rounded-xl border border-gray-400 bg-amber-50`}
           >
-            {loading ? "Signing in..." : "Sign in"}
+            {type === "signin" && (<>
+              {loading ? "Signing in..." : "Sign in"}
+            </>)}
+            {type === "signup" && (<>
+              {loading ? "Signing up..." : "Sign up"}
+            </>)}
           </button>
-          <p className="text-xs md:text-base">
-            Don`&apos;`t have an account?{" "}
+          {type === "signin" && <p className="text-xs md:text-base">
+            Don&apos;t have an account?{" "}
             <Link
-              href={"/signup"}
+              href={role === "seller" ? "/seller/signup" : "/signup"}
               className="cursor-pointer underline text-center"
             >
               Sign up
             </Link>
-          </p>
+          </p>}
+          {type === "signup" && <p className="text-xs md:text-base">
+            Already have an account?{" "}
+            <Link
+              href={role === "seller" ? "/seller/signin" : "/signin"}
+              className="cursor-pointer underline text-center"
+            >
+              Sign in
+            </Link>
+          </p>}
         </form>
       </div>
     </div>
