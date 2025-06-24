@@ -17,7 +17,7 @@ export const userSchema = z.object({
     }),
     firstname: z.string(),
     lastname: z.string(),
-    phone: z.number().gte(100000000).lte(999999999),
+    phone: z.number().gte(1000000000).lte(9999999999),
 });
 
 export const sellerSchema = z.object({

@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@/app/generated/prisma";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth/options";
 
 const prisma = new PrismaClient();
 
@@ -16,6 +18,13 @@ interface productCreateProps{
 }
 
 export async function POST(req : NextRequest){
+    const session = await getServerSession(authOptions);
+    if(!session || !session.user || !session.user.id){
+        return NextResponse.json({"message" : "Unauthorized"} , {status : 401});
+    }
+    if(session.user.role !== "seller"){
+        return NextResponse.json({"message" : "Forbidden"} , {status : 403});
+    }
     const data = await req.json();
 
     const{title , description , author , page , price, category , sellerId , quantity , imageUrl} : productCreateProps = data;

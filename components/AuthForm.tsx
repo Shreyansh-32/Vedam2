@@ -96,8 +96,8 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
   };
 
   return (
-    <div className="w-full h-[100vh] flex justify-center items-center bg-amber-50 text-sm md:text-base">
-      <div className="w-1/2 md:w-[40%] lg:w-[35%] min-h-[50vh] bg-white rounded-2xl border shadow-xl flex flex-col items-center gap-8 p-6">
+    <div className="w-full h-[100vh] flex justify-center items-center dark:bg-background bg-amber-50 text-sm md:text-base">
+      <div className="w-1/2 md:w-[40%] lg:w-[35%] min-h-[50vh] dark:bg-amber-100 bg-white rounded-2xl border shadow-xl flex flex-col items-center gap-8 p-6">
         <div className="flex flex-col gap-4 items-center">
           <Image src={"/Logo.png"} alt="Logo" height={100} width={100} />
           <h3 className="text-black md:text-xl text-lg">
@@ -111,7 +111,7 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
           <input
             type="email"
             {...register("email")}
-            className="px-2 md:px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-300 border w-[90%] md:w-4/5 border-gray-400 rounded-xl"
+            className="px-2 dark:bg-amber-50  md:px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-300 border w-[90%] md:w-4/5 border-gray-400 rounded-xl"
             placeholder="Email"
           />
           {errors.email && (
@@ -120,7 +120,7 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
           <input
             type="password"
             {...register("password")}
-            className="px-2 md:px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-300 border w-[90%] md:w-4/5 border-gray-400 rounded-xl"
+            className="px-2  dark:bg-amber-50 md:px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-300 border w-[90%] md:w-4/5 border-gray-400 rounded-xl"
             placeholder="Password"
           />
           {errors.password && (
@@ -131,7 +131,7 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
               <input
                 type="text"
                 placeholder="Firstname"
-                className="px-2 md:px-4 py-3 border w-[90%] md:w-4/5 focus:outline-none focus:ring-2 focus:ring-amber-300 border-gray-400 rounded-xl"
+                className="px-2 dark:bg-amber-50  md:px-4 py-3 border w-[90%] md:w-4/5 focus:outline-none focus:ring-2 focus:ring-amber-300 border-gray-400 rounded-xl"
                 {...register("firstname")}
               />
               {errors.firstname && (
@@ -142,7 +142,7 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
               <input
                 type="text"
                 placeholder="Lastname"
-                className="px-2 md:px-4 py-3 border w-[90%] md:w-4/5 focus:outline-none focus:ring-2 focus:ring-amber-300 border-gray-400 rounded-xl"
+                className="px-2 dark:bg-amber-50  md:px-4 py-3 border w-[90%] md:w-4/5 focus:outline-none focus:ring-2 focus:ring-amber-300 border-gray-400 rounded-xl"
                 {...register("lastname")}
               />
               {errors.lastname && (
@@ -153,7 +153,7 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
               <input
                 type="number"
                 placeholder="Phone"
-                className="px-2 md:px-4 py-3 appearance-none focus:outline-none focus:ring-2 focus:ring-amber-300 border w-[90%] md:w-4/5 border-gray-400 rounded-xl"
+                className="px-2 dark:bg-amber-50  md:px-4 py-3 appearance-none focus:outline-none focus:ring-2 focus:ring-amber-300 border w-[90%] md:w-4/5 border-gray-400 rounded-xl"
                 {...register("phone", { valueAsNumber: true })}
               />
               {errors.phone && (
@@ -168,7 +168,7 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
               loading
                 ? "opacity-50 cursor-not-allowed"
                 : " hover:bg-amber-100 duration-200 cursor-pointer"
-            } mt-3 px-2 py-3 rounded-xl border border-gray-400 bg-amber-50`}
+            } mt-3 px-2 py-3 rounded-xl border border-gray-400 bg-amber-50 dark:hover:bg-amber-200 text-black w-[50%] md:w-2/5 flex justify-center items-center`}
           >
             {type === "signin" && (<>
               {loading ? "Signing in..." : "Sign in"}
