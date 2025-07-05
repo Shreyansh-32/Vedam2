@@ -1,3 +1,4 @@
+import { authCheck } from "@/lib/authCheck";
 import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -12,6 +13,10 @@ interface addressProps{
 }
 
 export async function POST(req : NextRequest){
+    const session = await authCheck();
+    if(!session || !session.user || session.user.role !== "user"){
+        return NextResponse.json({"message" : "Unauthorized"} , {status : 401});
+    }
     const data = await req.json();
 
     const {houseNo , street , area , city , state , pincode , userId} : addressProps = data;
@@ -56,6 +61,10 @@ export async function POST(req : NextRequest){
 }
 
 export async function GET(req : NextRequest){
+    const session = await authCheck();
+    if(!session || !session.user || session.user.role !== "user"){
+        return NextResponse.json({"message" : "Unauthorized"} , {status : 401});
+    }
     const data = await req.json();
 
     const userId : number = data.userId;

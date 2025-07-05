@@ -11,13 +11,13 @@ export async function GET(req : NextRequest){
             where:{
                 OR:[
                     {
-                        title: {contains : search}
+                        title: {contains : search , mode: 'insensitive'}
                     },
                     {
-                        description : {contains : search}
+                        description : {contains : search , mode: 'insensitive'}
                     },
                     {
-                        author : {contains : search}
+                        author : {contains : search , mode: 'insensitive'}
                     }
                 ]
             }
