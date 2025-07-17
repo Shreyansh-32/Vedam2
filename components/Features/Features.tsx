@@ -10,7 +10,7 @@ function Card({
   icon: string;
 }) {
   return (
-    <div className="flex flex-col w-full sm:w-[45%] md:w-[45%] lg:w-[22%] h-64 items-center p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 bg-amber-100">
+    <div className="flex flex-col justify-center w-full sm:w-[45%] md:w-[45%] lg:w-[22%] h-64 items-center p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 bg-amber-100">
       <Image
         src={`/${icon}`}
         alt={title}
@@ -18,7 +18,7 @@ function Card({
         height={100}
         className="text-black"
       />
-      <h3 className="mt-4 text-xl font-semibold dark:text-black">{title}</h3>
+      <h3 className="mt-4 text-xl text-center font-semibold dark:text-black">{title}</h3>
       <p className="mt-2 text-center dark:text-black">{description}</p>
     </div>
   );

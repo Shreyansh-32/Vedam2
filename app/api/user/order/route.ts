@@ -18,7 +18,8 @@ export async function POST(req : NextRequest){
     }
     const data = await req.json();
 
-    const{productId , userId , quantity , addressId} : orderProps = data;
+    const{productId , quantity , addressId} : orderProps = data;
+    const userId = session.user.id;
 
     try{
         const product = await prisma.product.findFirst({
@@ -29,7 +30,7 @@ export async function POST(req : NextRequest){
 
         if(product){
             if(product.quantity < quantity){
-                return NextResponse.json({"message" : "Not enough quantity left"} , {status : 200});
+                return NextResponse.json({"message" : "Not enough quantity left"} , {status : 400});
             }
 
             else{

@@ -51,3 +51,12 @@ export async function getBooksCount({search , category} : {search ?: string, cat
     });
     return count;
 }
+
+export async function getBookById(id : number){
+    const book = await prisma.product.findUnique({
+        where : {
+            id: id
+        }
+    });
+    return book;
+}

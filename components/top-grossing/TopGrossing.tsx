@@ -31,7 +31,7 @@ const TopGrossing = async() => {
     });
 
   return (
-    <div className="bg-background my-4 ml-4 p-4 overflow-hidden">
+    <div className="bg-background md:mb-8 my-4 ml-4 p-4 overflow-hidden">
       <h2 className="text-2xl font-bold mb-4 border-b-2 border-amber-400 inline-block pb-1">
         Top Grossing
       </h2>

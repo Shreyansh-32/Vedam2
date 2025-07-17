@@ -5,7 +5,6 @@ import type { OurFileRouter } from "@/app/api/uploadthing/core";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { set } from "zod";
 
 const AddProduct = ({sellerId} : {sellerId : number}) => {
 

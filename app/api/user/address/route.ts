@@ -18,8 +18,8 @@ export async function POST(req : NextRequest){
         return NextResponse.json({"message" : "Unauthorized"} , {status : 401});
     }
     const data = await req.json();
-
-    const {houseNo , street , area , city , state , pincode , userId} : addressProps = data;
+    const userId : number = session.user.id;
+    const {houseNo , street , area , city , state , pincode} : addressProps = data;
 
     try{
         const address = await prisma.address.findFirst({
@@ -60,14 +60,12 @@ export async function POST(req : NextRequest){
     }
 }
 
-export async function GET(req : NextRequest){
+export async function GET(){
     const session = await authCheck();
     if(!session || !session.user || session.user.role !== "user"){
         return NextResponse.json({"message" : "Unauthorized"} , {status : 401});
     }
-    const data = await req.json();
-
-    const userId : number = data.userId;
+    const userId : number = session.user.id;
 
     try{
         const address = await prisma.address.findMany({

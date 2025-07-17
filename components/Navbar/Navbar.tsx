@@ -27,7 +27,7 @@ export default async function Navbar() {
 
   return (
     <div className="w-full h-12 md:h-16 bg-amber-100 shadow-xl flex justify-between items-center py-2 px-4 md:px-8 md:py-4">
-      <Logo />
+      <Logo/>
       <SearchInput />
       <div className="md:hidden p-5">
         <Sheet>

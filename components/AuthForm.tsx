@@ -69,7 +69,6 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
       }
     } else {
       setLoading(true);
-      console.log(data.firstname + "     " + data.lastname);
       const loadingToast = toast.loading("Signing up...");
       try {
         const res = await axios.post("/api/register", {
