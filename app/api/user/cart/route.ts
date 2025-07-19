@@ -85,3 +85,24 @@ export async function GET(req : NextRequest){
         return NextResponse.json({"message" : "Internal server error" , error : err} , {status : 500});
     }
 }
+
+export async function DELETE(req : NextRequest){
+    const session = await authCheck();
+   if(!session || !session.user || session.user.role !== "user"){
+    return NextResponse.json({"message" : "Unauthorized"} , {status : 401});
+   }
+    const data = await req.json();
+
+    const productId : number = data.productId;
+
+    try {
+        await prisma.cart.deleteMany({
+            where:{
+                productId
+            }
+        });
+        return NextResponse.json({"message" : "Product removed from cart successfully"} , {status : 200});
+    } catch (error) {
+        return NextResponse.json({"message" : "Internal server error" , error} , {status : 500});
+    }
+}

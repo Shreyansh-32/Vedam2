@@ -9,7 +9,7 @@ import {
   SelectValue,
 } from "./ui/select";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -44,6 +44,11 @@ export default function Address({
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [pincode, setPincode] = useState<number | null>(null);
+
+  useEffect(() => {
+    localStorage.removeItem("addressId");
+  })
+
   return (
     <div>
       {addresses.length > 0 ? (
@@ -70,7 +75,7 @@ export default function Address({
         </p>
       )}
       <Dialog>
-        <DialogTrigger className="mt-4 w-full border-2 border-amber-500 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-semibold px-3 py-2 md:px-6 md:py-3 rounded-xl transition duration-200">Add address</DialogTrigger>
+        <DialogTrigger className="w-full"><Button className="mt-4 w-full border-2 border-amber-500 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-semibold px-3 py-2 md:px-6 md:py-3 rounded-xl transition duration-200">Add address</Button></DialogTrigger>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Add address</DialogTitle>

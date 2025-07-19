@@ -54,7 +54,7 @@ export default function BuyNow({ bookId }: { bookId: number }) {
           Buy Now
         </Button>
       </DialogTrigger>
-      <DialogContent className="overflow-y-auto flex flex-col gap-4">
+      <DialogContent className="overflow-y-auto flex flex-col gap-4 bg-amber-100">
         <DialogHeader>
           <DialogTitle><Image
                   src={"/Logo.png"}

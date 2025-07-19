@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 
-export default function Quantity({ min, max}: { min: number; max: number }) {
-  const [quantity, setQuantity] = useState<number>(min);
+export default function CartQuantity({ min, max , cartQuantity}: { min: number; max: number; cartQuantity : number}) {
+  const [quantity, setQuantity] = useState<number>(cartQuantity);
 
   useEffect(() => {
     localStorage.setItem("quantity", quantity.toString());

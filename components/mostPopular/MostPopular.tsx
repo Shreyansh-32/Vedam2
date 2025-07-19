@@ -28,8 +28,10 @@ const MostPopular = async () => {
     where: {
       id: { in: productIds },
     },
+    include:{
+      feedbacks : true
+    }
   });
-
   return (
     <div className="bg-background my-4 ml-4 p-4 overflow-hidden">
       <h2 className="text-2xl font-bold mb-4 border-b-2 border-amber-400 inline-block pb-1">
@@ -42,7 +44,7 @@ const MostPopular = async () => {
               key={item.id}
               className="mt-2 basis-3/6 sm:basis-1/2 md:basis-1/3 lg:basis-1/4 xl:basis-1/5"
             >
-              <Card {...item} />
+              <Card item={item} />
             </CarouselItem>
           ))}
         </CarouselContent>

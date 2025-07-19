@@ -5,6 +5,7 @@ import type { OurFileRouter } from "@/app/api/uploadthing/core";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Image from "next/image";
 
 const AddProduct = ({sellerId} : {sellerId : number}) => {
 
@@ -136,7 +137,7 @@ const AddProduct = ({sellerId} : {sellerId : number}) => {
             {imageUrl && (
                 <div className="flex flex-col items-center">
                     <h3 className="text-green-500">Image uploaded successfully!</h3>
-                    <img src={imageUrl} alt="Uploaded image" width={100} height={100} className="rounded-md w-24"/>
+                    <Image src={imageUrl} alt="Uploaded image" width={100} height={100} className="rounded-md w-24"/>
                 </div>
             )}
             <button type="submit" className={`bg-green-500 text-white p-2 rounded hover:bg-green-600 transition-colors duration-300 ${loading ? " opacity-50 cursor-not-allowed" : " cursor-pointer"}`} disabled={loading}>

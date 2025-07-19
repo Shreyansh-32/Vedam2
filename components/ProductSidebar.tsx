@@ -6,7 +6,6 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -42,214 +41,309 @@ export default function ProductSidebar() {
 
   return (
     <div className="">
-      <div className="hidden lg:flex lg:flex-col w-[100%] p-4 h-[100vh] sticky top-0 bg-gray-100 dark:bg-gray-700 border-r border-gray-200 dark:border-gray-600">
-        <h2 className="text-2xl">Filter</h2>
-        <h4 className="text-lg mt-3">Category</h4>
-        <RadioGroup
-          value={category}
-          onValueChange={handleCategoryChange}
-          className="mt-2 space-y-1"
-        >
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="none"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="none">None</Label>
+      <div className="hidden lg:flex lg:flex-col w-[100%] p-6 h-[100vh] sticky top-0 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border-r border-gray-200 dark:border-gray-700 shadow-lg backdrop-blur-sm">
+        <div className="mb-8">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-amber-600 to-amber-800 bg-clip-text text-transparent mb-2">
+            Filter
+          </h2>
+          <div className="h-1 w-16 bg-gradient-to-r from-amber-500 to-amber-700 rounded-full"></div>
+        </div>
+        
+        <div className="space-y-8 overflow-y-auto flex-1 pr-2">
+          <div className="space-y-4">
+            <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+              Category
+            </h4>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700">
+              <RadioGroup
+                value={category}
+                onValueChange={handleCategoryChange}
+                className="space-y-3"
+              >
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="none"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="none" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    All Categories
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="Hindi-literature"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="Hindi-literature" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    Hindi Literature
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="Biography"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="Biography" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    Biography
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="Finance"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="Finance" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    Finance
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="Fiction"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="Fiction" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    Fiction
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="Classic"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="Classic" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    Classic
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="Religious"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="Religious" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    Religious
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="Business"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="Business" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    Business
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="History"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="History" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    History
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="Hindi-literature"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="Hindi-literature">Hindi-literature</Label>
+
+          <div className="space-y-4">
+            <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+              <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+              Sort By
+            </h4>
+            <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700">
+              <RadioGroup
+                value={sort}
+                onValueChange={handleSortChange}
+                className="space-y-3"
+              >
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="none"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="none" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    Default
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="low-high"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="low-high" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    Price: Low to High
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                  <RadioGroupItem
+                    value="high-low"
+                    className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                  />
+                  <Label htmlFor="high-low" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                    Price: High to Low
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="Biography"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="Biography">Biography</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="Finance"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="Finance">Finance</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="Fiction"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="Fiction">Fiction</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="Classic"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="Classic">Classic</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="Religious"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="Religious">Religious</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="Business"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="Business">Business</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="History"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="History">History</Label>
-          </div>
-        </RadioGroup>
-        <h4 className="text-lg mt-5">Sort By</h4>
-        <RadioGroup
-          value={sort}
-          onValueChange={handleSortChange}
-          className="mt-2 space-y-1"
-        >
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="none"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="none">None</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="low-high"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="low-high">Price: Low to High</Label>
-          </div>
-          <div className="flex items-center space-x-2">
-            <RadioGroupItem
-              value="high-low"
-              className="text-gray-500 border-gray-500 dark:border-gray-200"
-            />
-            <Label htmlFor="high-low">Price: High to Low</Label>
-          </div>
-        </RadioGroup>
+        </div>
       </div>
+
       <div className="lg:hidden">
         <Sheet>
-          <SheetTrigger className="cursor-pointer bg-gray-100 dark:bg-gray-700 p-2">
-            <ListFilter></ListFilter>
+          <SheetTrigger className="cursor-pointer bg-gradient-to-r p-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 font-medium">
+            <ListFilter className="w-5 h-5" />
+            <span>Filters</span>
           </SheetTrigger>
-          <SheetContent side="left" className="w-[80%] sm:w-[50%]">
-            <SheetHeader>
-              <SheetTitle>Filter</SheetTitle>
+          <SheetContent side="left" className="w-[80%] sm:w-[50%] bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 border-gray-200 dark:border-gray-700">
+            <SheetHeader className="mb-6">
+              <SheetTitle className="text-2xl font-bold bg-gradient-to-r from-amber-600 to-amber-600 bg-clip-text text-transparent flex items-center gap-2">
+                <ListFilter className="w-6 h-6 text-amber-500" />
+                Filter
+              </SheetTitle>
+              <div className="h-1 w-16 bg-gradient-to-r from-amber-500 to-amber-500 rounded-full"></div>
             </SheetHeader>
-            <RadioGroup
-              value={category}
-              onValueChange={handleCategoryChange}
-              className="pl-4 space-y-1"
-            >
-              <h4 className="text-lg">Category</h4>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="none"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="none">None</Label>
+            
+            <div className="space-y-6 overflow-y-auto">
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                  Category
+                </h4>
+                <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700">
+                  <RadioGroup
+                    value={category}
+                    onValueChange={handleCategoryChange}
+                    className="space-y-3"
+                  >
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="none"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="none" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        All Categories
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="Hindi-literature"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="Hindi-literature" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        Hindi Literature
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="Biography"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="Biography" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        Biography
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="Finance"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="Finance" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        Finance
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="Fiction"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="Fiction" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        Fiction
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="Classic"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="Classic" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        Classic
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="Religious"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="Religious" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        Religious
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="Business"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="Business" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        Business
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="History"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="History" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        History
+                      </Label>
+                    </div>
+                  </RadioGroup>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="Hindi-literature"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="Hindi-literature">Hindi-literature</Label>
+
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-gray-800 dark:text-gray-200 flex items-center gap-2">
+                  <div className="w-2 h-2 bg-amber-500 rounded-full"></div>
+                  Sort By
+                </h4>
+                <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700">
+                  <RadioGroup
+                    value={sort}
+                    onValueChange={handleSortChange}
+                    className="space-y-3"
+                  >
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="none"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="none" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        Default
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="low-high"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="low-high" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        Price: Low to High
+                      </Label>
+                    </div>
+                    <div className="flex items-center space-x-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-200 group">
+                      <RadioGroupItem
+                        value="high-low"
+                        className="border-2 border-gray-300 dark:border-gray-500 text-amber-600 data-[state=checked]:border-amber-500 data-[state=checked]:bg-amber-500"
+                      />
+                      <Label htmlFor="high-low" className="text-gray-700 dark:text-gray-300 font-medium cursor-pointer group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors">
+                        Price: High to Low
+                      </Label>
+                    </div>
+                  </RadioGroup>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="Biography"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="Biography">Biography</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="Finance"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="Finance">Finance</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="Fiction"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="Fiction">Fiction</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="Classic"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="Classic">Classic</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="Religious"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="Religious">Religious</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="Business"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="Business">Business</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="History"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="History">History</Label>
-              </div>
-            </RadioGroup>
-            <RadioGroup
-              value={sort}
-              onValueChange={handleSortChange}
-              className="mt-2 pl-4 space-y-1"
-            >
-              <h4 className="text-lg mt-5">Sort By</h4>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="none"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="none">None</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="low-high"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="low-high">Price: Low to High</Label>
-              </div>
-              <div className="flex items-center space-x-2">
-                <RadioGroupItem
-                  value="high-low"
-                  className="text-gray-500 border-gray-500 dark:border-gray-200"
-                />
-                <Label htmlFor="high-low">Price: High to Low</Label>
-              </div>
-            </RadioGroup>
+            </div>
           </SheetContent>
         </Sheet>
       </div>

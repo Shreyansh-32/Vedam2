@@ -10,6 +10,7 @@ import BuyNow from "@/components/BuyNow";
 import Quantity from "@/components/Quantity";
 import AddFeedback from "@/components/AddFeedback";
 import Address from "@/components/Address";
+import Image from "next/image";
 
 export default async function ProductPage({
   params,
@@ -57,9 +58,11 @@ export default async function ProductPage({
               <div className="relative group max-w-md w-full">
                 <div className="absolute -inset-4 bg-gradient-to-r from-amber-400 to-orange-400 rounded-3xl blur opacity-20 group-hover:opacity-30 transition duration-300"></div>
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-2xl">
-                  <img
+                  <Image
                     src={book.imageUrl}
                     alt={book.title}
+                    height={100}
+                    width={100}
                     className="w-full h-auto max-h-[500px] object-contain rounded-xl transform group-hover:scale-105 transition duration-300"
                   />
                 </div>
