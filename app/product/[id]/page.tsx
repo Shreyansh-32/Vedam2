@@ -45,6 +45,8 @@ export default async function ProductPage({
     );
   }
 
+  const inStock = book.quantity > 0;
+
   return (
     <div className="w-full min-h-[100vh] flex flex-col bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <Navbar />
@@ -67,8 +69,8 @@ export default async function ProductPage({
                   />
                 </div>
                 {/* Additional Info Cards */}
-                <div className="absolute -right-4 top-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
-                  In Stock
+                <div className={`absolute -right-4 top-4 ${inStock ? "bg-green-500" : "bg-red-500"} text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg`}>
+                  {inStock ? "In stock" : "Out of stock"}
                 </div>
               </div>
             </div>
@@ -136,7 +138,7 @@ export default async function ProductPage({
 
                     {/* Action Buttons */}
                     <div className="flex flex-col gap-3">
-                      <BuyNow bookId={book.id}/>
+                      {inStock && <BuyNow bookId={book.id}/>}
                       <AddToCartLg id={book.id} />
                       {/* <AddtoCart id={book.id} /> */}
                     </div>

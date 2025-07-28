@@ -71,7 +71,7 @@ export default async function Orders() {
                     </div>
                     <div className="flex items-center gap-2">
                       <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-3 py-1 rounded-full text-sm font-medium">
-                        Confirmed
+                        {order.status.charAt(0).toUpperCase()+order.status.slice(1)}
                       </span>
                       <span className="text-lg font-bold text-amber-600 dark:text-amber-400">
                         ₹{order.price.toFixed(2)}

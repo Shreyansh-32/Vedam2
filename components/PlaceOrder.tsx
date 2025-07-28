@@ -22,9 +22,18 @@ export default async function placeOrder({quantity , addressId , bookId} : {quan
            userId :  session.user.id,
            quantity : quantityNumber,
            price,
-           addressId : addressIdNumber
+           addressId : addressIdNumber,
+           status : "placed"
         }
     });
+    await prisma.product.update({
+        where:{
+            id : bookIdNumber
+        },
+        data:{
+            quantity : {decrement : quantityNumber}
+        }
+    })
     return true;
    } catch (error) {
         console.error(error);

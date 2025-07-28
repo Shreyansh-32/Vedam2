@@ -2,8 +2,10 @@ import ClientSideCleanup from "@/components/ClientCleanup";
 import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import placeOrder from "@/components/PlaceOrder";
+import { Button } from "@/components/ui/button";
 import { stripe } from "@/lib/stripe";
 import { Check } from "lucide-react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 async function getSession({sessionId} : {sessionId : string}){
@@ -44,6 +46,7 @@ export default async function PaymentResult({searchParams} : {searchParams: { [k
                     <h2 className="text-2xl">Payment successfull!</h2>
                     <h3 className="text-xl">Order placed successfully</h3>
                 </div>
+                <Link href={"/"}><Button>Return home</Button></Link>
             </div>
         </div>
         <Footer/>

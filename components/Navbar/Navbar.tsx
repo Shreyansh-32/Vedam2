@@ -51,14 +51,14 @@ export default async function Navbar() {
               <SheetTitle>
                 Theme <ModeToggle />
               </SheetTitle>
-              {session && (
+              {session?.user.role === "user" && (
                 <SheetTitle>
                   <SignOut></SignOut>
                 </SheetTitle>
               )}
-              {!session && (
+              {!session || session.user.role !== "user" && (
                 <SheetTitle>
-                  <Link href={"/signin"}>Sign in</Link>
+                  <Link href={"/signin"}><Button>Sign in</Button></Link>
                 </SheetTitle>
               )}
             </SheetHeader>
@@ -81,8 +81,8 @@ export default async function Navbar() {
             <DropdownMenuSeparator />
             <DropdownMenuItem><Link href={"/orders"} className=" flex items-center gap-1"><ShoppingBag></ShoppingBag> Orders</Link></DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>{session && <SignOut/>}</DropdownMenuItem>
-            <DropdownMenuItem>{!session && <Link href={"signin"}><Button className="w-full cursor-pointer">Sign in</Button></Link>}</DropdownMenuItem>
+            <DropdownMenuItem>{session?.user.role === "user" && <SignOut/>}</DropdownMenuItem>
+            <DropdownMenuItem>{(!session || session.user.role !== "user") && <Link href={"signin"}><Button className="w-full cursor-pointer">Sign in</Button></Link>}</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

@@ -21,6 +21,7 @@ export default function ProductSidebar() {
 
   function handleCategoryChange(value: string) {
     const params = new URLSearchParams(searchParams.toString());
+    params.delete("page");
     if (value === "none") {
       params.delete("category");
     } else {
