@@ -19,8 +19,8 @@ async function getSession({sessionId} : {sessionId : string}){
 }
 
 export default async function PaymentResult({searchParams} : {searchParams: { [key: string]: string | undefined };}){
-    const sessionId = (await searchParams).session_id;
-    const {bookId , addressId , quantity} = await searchParams;
+    const sessionId = (searchParams).session_id;
+    const {bookId , addressId , quantity} = searchParams;
     if(!sessionId || !bookId || !addressId || !quantity){
         redirect("/");
     }
