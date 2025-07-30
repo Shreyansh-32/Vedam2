@@ -1,10 +1,12 @@
 import { prisma } from "./prisma";
 
-export async function getProducts(sellerId : number){
+export async function getProducts(sellerId : number , page : number){
     const product = await prisma.product.findMany({
         where:{
             sellerId
-        }
+        },
+        skip:(page-1)*5,
+        take:5
     });
 
     return product;

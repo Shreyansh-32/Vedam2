@@ -21,8 +21,6 @@ const Chart = ({
   }[];
 }) => {
   const [activeChart, setActiveChart] = useState<'price' | 'quantity'>('price');
-
-  // Custom tooltip component with proper TypeScript types
   interface TooltipProps {
     active?: boolean;
     payload?: Array<{
@@ -49,7 +47,6 @@ const Chart = ({
 
    
 
-  // Custom tick formatter for mobile to handle long category names
   const formatTick = (value: string) => {
     if (value.length > 8) {
       return value.substring(0, 6) + '...';
