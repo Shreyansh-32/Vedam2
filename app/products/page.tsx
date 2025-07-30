@@ -17,7 +17,7 @@ import Footer from "@/components/Footer/Footer";
 export default async function ProductsPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
   const params = await searchParams;
   const page = parseInt((params.page as string) || "1");
