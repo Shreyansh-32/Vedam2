@@ -1,11 +1,11 @@
 "use client";
 
 import { UploadButton } from "@uploadthing/react";
-import type { OurFileRouter } from "@/app/api/uploadthing/core";
-import { useRef, useState } from "react";
-import toast from "react-hot-toast";
 import axios from "axios";
 import Image from "next/image";
+import { useRef, useState } from "react";
+import toast from "react-hot-toast";
+import type { OurFileRouter } from "@/app/api/uploadthing/core";
 import {
   Select,
   SelectContent,
@@ -14,13 +14,24 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-interface AddProductProps {
+interface Book {
+  id: number;
+  title: string;
+  description: string;
+  author: string;
+  page: number;
+  price: number;
+  category: string;
   sellerId: number;
+  quantity: number;
+  imageUrl: string;
 }
 
-const AddProduct = ({ sellerId }: AddProductProps) => {
+export default function EditProduct({ product }: { product: Book | null }) {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(
+    product ? product.imageUrl : null
+  );
 
   const title = useRef<HTMLInputElement>(null);
   const description = useRef<HTMLTextAreaElement>(null);
@@ -28,7 +39,9 @@ const AddProduct = ({ sellerId }: AddProductProps) => {
   const pages = useRef<HTMLInputElement>(null);
   const author = useRef<HTMLInputElement>(null);
   const quantity = useRef<HTMLInputElement>(null);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(product ? product.category : "");
+
+  if (!product) return null;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,7 +55,7 @@ const AddProduct = ({ sellerId }: AddProductProps) => {
       imageUrl: imageUrl || "",
       quantity: parseInt(quantity.current?.value || "0", 10),
       category: selectedCategory,
-      sellerId
+      id: product.id,
     };
 
     if (!productData.imageUrl) {
@@ -69,9 +82,9 @@ const AddProduct = ({ sellerId }: AddProductProps) => {
     try {
       setLoading(true);
       console.log(productData);
-      const res = await axios.post("/api/seller/product", productData);
+      const res = await axios.put("/api/seller/product", productData);
       if (res.status === 200) {
-        toast.success("Product added successfully!");
+        toast.success("Product updated successfully!");
         title.current!.value = "";
         description.current!.value = "";
         price.current!.value = "";
@@ -82,7 +95,7 @@ const AddProduct = ({ sellerId }: AddProductProps) => {
       }
     } catch (error) {
       console.error("Error adding product:", error);
-      toast.error("Failed to add product. Please try again.");
+      toast.error("Failed to Update product. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -95,35 +108,35 @@ const AddProduct = ({ sellerId }: AddProductProps) => {
         className="w-full max-w-2xl shadow-lg rounded-lg p-8 space-y-6"
       >
         <h1 className="text-3xl font-bold text-center">
-          Add Product
+          Edit Product
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <input
             type="text"
             placeholder="Title"
-  
+            defaultValue={product.title}
             className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             ref={title}
           />
           <input
             type="text"
             placeholder="Author"
-  
+            defaultValue={product.author}
             className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             ref={author}
           />
           <input
             type="number"
             placeholder="Price"
-  
+            defaultValue={product.price}
             className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             ref={price}
           />
           <input
             type="number"
             placeholder="Pages"
-  
+            defaultValue={product.page}
             className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             ref={pages}
           />
@@ -146,7 +159,7 @@ const AddProduct = ({ sellerId }: AddProductProps) => {
           <input
             type="number"
             placeholder="Quantity"
-  
+            defaultValue={product.quantity}
             className="p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             ref={quantity}
           />
@@ -156,7 +169,7 @@ const AddProduct = ({ sellerId }: AddProductProps) => {
           placeholder="Description"
           className="w-full overflow-y-auto p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
           ref={description}
-
+          defaultValue={product.description}
         />
 
         <div className="w-full flex flex-col items-center gap-2">
@@ -206,11 +219,9 @@ const AddProduct = ({ sellerId }: AddProductProps) => {
             loading ? "opacity-50 cursor-not-allowed" : ""
           }`}
         >
-          {loading ? "Adding..." : "Add Product"}
+          {loading ? "Updating..." : "Update Product"}
         </button>
       </form>
     </div>
   );
-};
-
-export default AddProduct;
+}

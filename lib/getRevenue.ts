@@ -24,6 +24,9 @@ export async function getRevenue(sellerId : number){
         where:{
            productId:{
             in : productIds
+           },
+           status:{
+            in : ["placed" , "shipped" , "delivered"]
            }
         },
         _sum : {
@@ -79,6 +82,9 @@ export async function getOrdersByProduct(sellerId : number){
         where:{
             productId : {
                 in : productIds
+            },
+            status:{
+                in : ["placed" , "shipped" , "delivered"]
             }
         },
         include:{

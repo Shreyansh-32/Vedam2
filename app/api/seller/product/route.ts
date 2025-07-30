@@ -24,58 +24,25 @@ export async function POST(req : NextRequest){
     if(session.user.role !== "seller"){
         return NextResponse.json({"message" : "Forbidden"} , {status : 403});
     }
-    const data = await req.json();
 
-    const{title , description , author , page , price, category , sellerId , quantity , imageUrl} : productCreateProps = data;
+   const data = await req.json();
+    const { title, description, author, page, price, category, sellerId, quantity, imageUrl } : productCreateProps = data;
 
-    try{
-        const product = await prisma.product.findFirst({
-            where:{
-                title,
-                description,
-                author,
-                page,
-                price,
-                sellerId,
-                category
-            }
+    try {
+        const existing = await prisma.product.findFirst({
+            where: { title, sellerId }
+        });
+        if (existing) {
+            return NextResponse.json({ message: "Product already exists" }, { status: 409 });
+        }
+
+        await prisma.product.create({
+            data: { title, description, author, page, price, category, sellerId, imageUrl, quantity }
         });
 
-        if(product){
-            await prisma.product.update({
-                where : {
-                    id : product.id
-                },
-                data : {
-                    quantity : {
-                        increment : quantity
-                    }
-                }
-            });
-
-            return NextResponse.json({"message" : "Product added successfully"} , {status : 200});
-        }
-
-        else{
-            await prisma.product.create({
-                data : {
-                    title,
-                    description,
-                    author,
-                    page,
-                    price,
-                    category,
-                    sellerId,
-                    imageUrl,
-                    quantity
-                }
-            });
-
-            return NextResponse.json({"message" : "Product added successfully"} , {status : 200});
-        }
-    }
-    catch(err){
-        return NextResponse.json({"message" : "Internal server error" , error : err} , {status : 500});
+        return NextResponse.json({ message: "Product added successfully" }, { status: 200 });
+    } catch (err) {
+        return NextResponse.json({ message: "Internal server error", error: err }, { status: 500 });
     }
 }
 
@@ -105,5 +72,34 @@ export async function GET(){
     }
     catch(err){
         return NextResponse.json({"message" : "Internal server error" , error : err} , {status : 500});
+    }
+}
+
+export async function PUT(req : NextRequest){
+    const session = await getServerSession(authOptions);
+    if(!session || !session.user || !session.user.id){
+        return NextResponse.json({"message" : "Unauthorized"} , {status : 401});
+    }
+    if(session.user.role !== "seller"){
+        return NextResponse.json({"message" : "Forbidden"} , {status : 403});
+    }
+    const data = await req.json();
+    const { title, description, author, page, price, category, quantity, imageUrl, id } = data;
+    console.log(title,description,author,page,price,category,quantity,imageUrl,id);
+    try {
+        const product = await prisma.product.findUnique({ where: { id } });
+
+        if (product) {
+            await prisma.product.update({
+                where: { id },
+                data: { title, description, author, page, price, category, quantity, imageUrl }
+            });
+
+            return NextResponse.json({ message: "Product updated successfully" }, { status: 200 });
+        } else {
+            return NextResponse.json({ message: "Product not found" }, { status: 404 });
+        }
+    } catch (err) {
+        return NextResponse.json({ message: "Internal server error", error: err }, { status: 500 });
     }
 }

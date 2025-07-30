@@ -78,9 +78,12 @@ export async function DELETE(req : NextRequest){
     const {id , productId , quantity} : orderDeleteProps = data;
 
     try{
-        await prisma.order.delete({
+        await prisma.order.update({
             where : {
                 id
+            },
+            data:{
+                status : "cancelled"
             }
         });
 
