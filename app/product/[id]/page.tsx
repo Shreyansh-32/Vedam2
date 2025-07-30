@@ -15,7 +15,7 @@ import Image from "next/image";
 export default async function ProductPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const awaitedParams = await params;
   const id = awaitedParams.id;
