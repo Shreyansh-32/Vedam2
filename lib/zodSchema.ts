@@ -18,6 +18,7 @@ export const userSchema = z.object({
     firstname: z.string(),
     lastname: z.string(),
     phone: z.number().gte(1000000000).lte(9999999999),
+    role : z.enum(["user" , "seller"])
 });
 
 export const sellerSchema = z.object({
@@ -54,5 +55,6 @@ export const signinSchema = z.object({
     .refine((password) => /[0-9]/.test(password), { message: 'Must contain one digit' })
     .refine((password) => /[!@#$%^&*]/.test(password), {
       message: 'Must contain one specail character',
-    })
+    }),
+    role : z.enum(["user" , "seller"])
 })

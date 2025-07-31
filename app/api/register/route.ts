@@ -19,7 +19,7 @@ export async function POST(req : NextRequest){
     const {email , password , firstname , lastname , phone , role} : signupProp = data;
 
     try{
-        const res = await userSchema.safeParse({email , password , firstname , lastname , phone});
+        const res = await userSchema.safeParse({email , password , firstname , lastname , phone , role});
 
         if(res.success){
             if(role === "user"){
