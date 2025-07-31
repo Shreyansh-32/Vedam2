@@ -59,7 +59,7 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
           router.push(role === "seller" ? "/seller" : "/");
           return;
         } else {
-          toast.error(res?.error || "Invalid username or password");
+          toast.error("Invalid username or password");
         }
       } catch (err) {
         toast.error("Sign in failed");
