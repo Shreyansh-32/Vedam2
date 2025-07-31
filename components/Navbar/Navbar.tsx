@@ -56,7 +56,7 @@ export default async function Navbar() {
                   <SignOut></SignOut>
                 </SheetTitle>
               )}
-              {!session || session.user.role !== "user" && (
+              {(!session || session.user.role !== "user") && (
                 <SheetTitle>
                   <Link href={"/signin"}><Button>Sign in</Button></Link>
                 </SheetTitle>
