@@ -1,6 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaClient } from "@/app/generated/prisma";
-import { NextAuthOptions } from "next-auth";
+import { NextAuthOptions, User } from "next-auth";
 import bcrypt from "bcrypt";
 
 
@@ -17,9 +17,9 @@ export const authOptions : NextAuthOptions = {
         password : {label : "password" , placeholder : "Password"},
       },
 
-      async authorize(credentials, req) {
+      async authorize(credentials, req) : Promise<User | null> {
           if(!credentials?.email || !credentials.password){
-            throw new Error("Missing email or password");
+            return null;
           }
           try{
             const role = req.body?.role;
@@ -32,20 +32,20 @@ export const authOptions : NextAuthOptions = {
               });
 
               if(!user){
-                throw new Error("User with given email doesn't exist");
+                return null;
               }
 
               const isValid = await bcrypt.compare(credentials.password , user.password);
 
               if(!isValid){
-                throw new Error("Invalid password");
+                return null;
               }
 
               return{
                 id : user.id,
                 email : user.email,
                 role : "user"
-              };
+              } as User;
             }
             if(role === "seller"){
               const seller = await prisma.seller.findUnique({
@@ -55,26 +55,27 @@ export const authOptions : NextAuthOptions = {
               });
 
               if(!seller){
-                throw new Error("Seller with given email doesn't exist");
+                return null;
               }
 
               const isValid = await bcrypt.compare(credentials.password , seller.password);
 
               if(!isValid){
-                throw new Error("Invalid password");
+                return null;
               }
 
               return{
                 id : seller.id,
                 email : seller.email,
                 role : "seller"
-              };
+              } as User;
             }
           }
           catch(err){
             console.error("Auth error: "+err);
-            throw err;
+            return null;
           }
+          return null;
       },
     })
   ],
