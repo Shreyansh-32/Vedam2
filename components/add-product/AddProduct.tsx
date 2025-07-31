@@ -161,7 +161,7 @@ const AddProduct = ({ sellerId }: AddProductProps) => {
 
         <div className="w-full flex flex-col items-center gap-2">
           {!imageUrl && (
-            <UploadButton<OurFileRouter>
+            <UploadButton<OurFileRouter , "imageUploader">
               endpoint="imageUploader"
               onClientUploadComplete={(res: { url: string }[] | undefined) => {
                 if (res && res[0]?.url) {
@@ -171,7 +171,7 @@ const AddProduct = ({ sellerId }: AddProductProps) => {
               disabled={!!imageUrl}
               className="ut-button bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
             >
-              Upload Image
+              
             </UploadButton>
           )}
 
