@@ -96,11 +96,16 @@ const AuthForm = ({ type, role }: AuthFormProps) => {
 
   return (
     <div className="w-full h-[100vh] flex justify-center items-center dark:bg-background bg-amber-50 text-sm md:text-base">
-      <div className="w-1/2 md:w-[40%] lg:w-[35%] min-h-[50vh] dark:bg-amber-100 bg-white rounded-2xl border shadow-xl flex flex-col items-center gap-8 p-6">
+      <div className="w-2/3 md:w-[40%] lg:w-[35%] min-h-[50vh] dark:bg-amber-100 bg-white rounded-2xl border shadow-xl flex flex-col items-center gap-8 p-6">
         <div className="flex flex-col gap-4 items-center">
           <Image src={"/Logo.png"} alt="Logo" height={100} width={100} />
-          <h3 className="text-black md:text-xl text-lg">
-            {type === "signin" ? "Sign in" : "Create an account"}
+          <h3 className="text-black md:text-xl text-lg flex flex-col gap-1 items-center">
+            <div>
+              {role === "seller" ? "Seller" : ""}  
+            </div> 
+            <div>
+              {type === "signin" ? "Sign in" : "Create an account"}
+            </div>
           </h3>
         </div>
         <form
