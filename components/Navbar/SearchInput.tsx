@@ -6,7 +6,7 @@ import { useRef } from "react";
 
 const SearchInput = () => {
 
-    const inputRef = useRef(null);
+    const inputRef = useRef<HTMLInputElement>(null);
     const router = useRouter();
 
   return (
@@ -19,7 +19,7 @@ const SearchInput = () => {
             } else {
                 router.push('/products');
             }
-            inputRef.current.value = '';
+            if(inputRef.current)inputRef.current.value = '';
         }}>
           <input
           type="text"
