@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 const Footer = () => {
   return (
     <footer className="bg-amber-100 dark:bg-neutral-900 text-black dark:text-white px-6 pt-10 pb-5">
@@ -10,18 +12,16 @@ const Footer = () => {
     <div>
       <h3 className="font-semibold mb-2">Quick Links</h3>
       <ul className="text-sm space-y-1">
-        <li><a href="/products" className="hover:underline">Browse Books</a></li>
-        <li><a href="/cart" className="hover:underline">Cart</a></li>
-        <li><a href="/orders" className="hover:underline">Orders</a></li>
+        <li><Link href="/products" className="hover:underline">Browse Books</Link></li>
+        <li><Link href="/cart" className="hover:underline">Cart</Link></li>
+        <li><Link href="/orders" className="hover:underline">Orders</Link></li>
       </ul>
     </div>
 
     <div>
       <h3 className="font-semibold mb-2">Help</h3>
       <ul className="text-sm space-y-1">
-        <li><a href="/about" className="hover:underline">About Us</a></li>
-        <li><a href="/faq" className="hover:underline">FAQ</a></li>
-        <li><a href="/terms" className="hover:underline">Terms & Conditions</a></li>
+        <li><Link href="/seller" className="hover:underline">Become a seller</Link></li>
       </ul>
     </div>
 
@@ -30,7 +30,6 @@ const Footer = () => {
       <p className="text-sm">support@vedam.in</p>
       <p className="text-sm">+91 99999 99999</p>
       <div className="flex space-x-3 mt-3">
-        {/* Icons go here (lucide or heroicons) */}
       </div>
     </div>
   </div>
