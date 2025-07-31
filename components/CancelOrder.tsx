@@ -40,6 +40,6 @@ export default function CancelOrder({productId , id , quantity} : {id:number, qu
             redirect("/orders");
           }
         }}
-        className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-400 hover:to-red-300 text-white font-semibold px-8 py-3 rounded-xl shadow-lg transform hover:scale-105 transition duration-200">Cancel order</Button>
+        className="bg-gradient-to-r from-red-600 to-red-500 hover:from-red-400 hover:to-red-300 text-white font-semibold px-8 py-3 rounded-xl shadow-lg transform hover:scale-105 transition duration-200 md:w-1/2 w-full">Cancel order</Button>
   )
 }

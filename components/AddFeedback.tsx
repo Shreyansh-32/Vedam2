@@ -24,9 +24,9 @@ export default function AddFeedback({userId , productId} : {userId : number | un
   const router = useRouter();
 
   return (
-    <div>
+    <div className="w-full md:w-1/2">
       <Dialog>
-        <DialogTrigger className="">
+        <DialogTrigger className="w-full">
           <Button className="border-2 w-full border-amber-500 text-amber-600 hover:bg-amber-50 dark:hover:bg-amber-900/20 font-semibold px-3 py-2 md:px-6 md:py-3 rounded-xl transition duration-200">Write Review</Button>
         </DialogTrigger>
         <DialogContent>
