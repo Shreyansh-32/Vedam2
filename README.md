@@ -162,7 +162,7 @@ We welcome contributions from developers who share our vision of making books ac
 
 ### User Interface
 ![Homepage](screenshots/homepage.png)
-[](screenshots/homepage2.png)
+![Homepage](screenshots/homepage2.png)
 *Clean, intuitive homepage showcasing featured books*
 
 ![Product Catalog](screenshots/catalog.png)
@@ -188,7 +188,6 @@ We welcome contributions from developers who share our vision of making books ac
 
 If you encounter any issues or have questions:
 
-- 📧 Email: support@vedam.com
 - 🐛 Issues: [GitHub Issues](https://github.com/Shreyansh-32/Vedam2/issues)
 - 💬 Discussions: [GitHub Discussions](https://github.com/Shreyansh-32/Vedam2/discussions)
 
