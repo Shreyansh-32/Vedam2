@@ -22,7 +22,7 @@ export default async function ProductPage({
   const session = await getServerSession(authOptions);
   const bookId = parseInt(id);
   const book = await getBookById(bookId);
-  const addresses = session
+  const addresses = session?.user.role === "user"
     ? await prisma.address.findMany({
         where: { userId: session.user.id },
       })
